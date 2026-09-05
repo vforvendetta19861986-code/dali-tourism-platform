@@ -1,0 +1,691 @@
+<title>پروپوزال سرمایه‌گذاری دلی</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+
+  :root{
+    --bg:#F6F3EC;
+    --surface:#FFFFFF;
+    --surface-2:#FBF8F2;
+    --text:#1B2320;
+    --text-muted:#5C6B65;
+    --primary:#0E5C55;
+    --primary-strong:#083E3A;
+    --primary-tint:#E4EFEC;
+    --accent:#C9762F;
+    --accent-tint:#F6E8D8;
+    --line:#E2DCCC;
+    --good:#2F7D5B;
+    --warn:#B4562A;
+    --critical:#B23A3A;
+    --shadow: 0 1px 2px rgba(20,30,26,.06), 0 8px 24px -12px rgba(20,30,26,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0B1613;
+      --surface:#111F1B;
+      --surface-2:#0E1B17;
+      --text:#EAE7DD;
+      --text-muted:#93A79F;
+      --primary:#57C2B3;
+      --primary-strong:#8AD9CC;
+      --primary-tint:#12302B;
+      --accent:#E39A55;
+      --accent-tint:#2E2115;
+      --line:#233731;
+      --good:#4FAE85;
+      --warn:#D98F5C;
+      --critical:#DD6E6E;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0B1613;
+    --surface:#111F1B;
+    --surface-2:#0E1B17;
+    --text:#EAE7DD;
+    --text-muted:#93A79F;
+    --primary:#57C2B3;
+    --primary-strong:#8AD9CC;
+    --primary-tint:#12302B;
+    --accent:#E39A55;
+    --accent-tint:#2E2115;
+    --line:#233731;
+    --good:#4FAE85;
+    --warn:#D98F5C;
+    --critical:#DD6E6E;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    direction:rtl;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Vazirmatn',Tahoma,sans-serif;
+    line-height:1.85;
+    font-size:16px;
+  }
+  h1,h2,h3,h4{ text-wrap:balance; font-weight:800; color:var(--text); margin:0; }
+  p{ margin:0 0 1em; color:var(--text); max-width:70ch; }
+  table{ border-collapse:collapse; width:100%; font-variant-numeric:tabular-nums; }
+  a{ color:var(--primary-strong); }
+  .num{ font-variant-numeric:tabular-nums; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px; }
+
+  /* ---- nav ---- */
+  .toc{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    white-space:nowrap;
+  }
+  .toc .wrap{ display:flex; gap:4px; padding:10px 24px; max-width:1040px; }
+  .toc a{
+    display:inline-block; padding:6px 12px; border-radius:8px;
+    font-size:13px; font-weight:600; color:var(--text-muted); text-decoration:none;
+    flex:none;
+  }
+  .toc a:hover{ background:var(--primary-tint); color:var(--primary-strong); }
+
+  /* ---- cover ---- */
+  .cover{
+    background:
+      radial-gradient(1200px 400px at 15% -10%, var(--accent-tint), transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, var(--primary-tint), transparent 55%),
+      var(--surface-2);
+    border-bottom:1px solid var(--line);
+    padding:64px 0 48px;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:700; letter-spacing:.03em;
+    color:var(--primary-strong); background:var(--primary-tint);
+    padding:6px 14px; border-radius:999px; margin-bottom:22px;
+  }
+  .cover h1{ font-size:clamp(32px,5vw,52px); line-height:1.25; margin-bottom:14px; }
+  .cover .sub{ font-size:19px; color:var(--text-muted); max-width:56ch; margin-bottom:28px; }
+  .cover-meta{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border:1px solid var(--line); border-radius:14px; overflow:hidden; background:var(--surface);
+    box-shadow:var(--shadow);
+  }
+  .cover-meta div{ padding:16px 18px; border-inline-start:1px solid var(--line); }
+  .cover-meta div:first-child{ border-inline-start:none; }
+  .cover-meta .k{ font-size:12px; color:var(--text-muted); margin-bottom:4px; }
+  .cover-meta .v{ font-size:15px; font-weight:700; }
+
+  /* ---- sections ---- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+  section.alt{ background:var(--surface-2); }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:28px; }
+  .sec-num{
+    font-size:14px; font-weight:800; color:var(--accent);
+    border:1.5px solid var(--accent); border-radius:8px; padding:2px 9px;
+    flex:none;
+  }
+  .sec-head h2{ font-size:clamp(22px,3vw,30px); }
+  .sec-lede{ color:var(--text-muted); font-size:16px; margin-bottom:30px; max-width:68ch; }
+
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:720px){ .grid2,.grid3{ grid-template-columns:1fr; } }
+
+  .stat{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px;
+  }
+  .stat .big{ font-size:30px; font-weight:800; color:var(--primary-strong); line-height:1.1; }
+  .stat .lbl{ font-size:13.5px; color:var(--text-muted); margin-top:6px; }
+
+  table.data{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; font-size:14.5px;
+  }
+  table.data th{
+    background:var(--primary-tint); color:var(--primary-strong);
+    text-align:start; padding:10px 14px; font-weight:700; font-size:13px;
+  }
+  table.data td{ padding:10px 14px; border-top:1px solid var(--line); }
+  table.data tr:hover td{ background:var(--surface-2); }
+  .table-scroll{ overflow-x:auto; border-radius:12px; }
+  .table-scroll table.data{ border-radius:0; min-width:560px; }
+
+  .tag{
+    display:inline-block; padding:3px 10px; border-radius:999px;
+    font-size:12px; font-weight:700;
+  }
+  .tag.good{ background:color-mix(in srgb, var(--good) 16%, transparent); color:var(--good); }
+  .tag.warn{ background:color-mix(in srgb, var(--warn) 16%, transparent); color:var(--warn); }
+  .tag.crit{ background:color-mix(in srgb, var(--critical) 16%, transparent); color:var(--critical); }
+  .tag.accent{ background:var(--accent-tint); color:var(--accent); }
+
+  .note{
+    border-inline-start:3px solid var(--accent); background:var(--accent-tint);
+    padding:14px 18px; border-radius:0 10px 10px 0; font-size:14.5px; color:var(--text);
+  }
+  .note.risk{ border-inline-start-color:var(--critical); background:color-mix(in srgb, var(--critical) 10%, var(--surface)); }
+  .note strong{ color:var(--text); }
+
+  ul.plain{ margin:0; padding:0; list-style:none; }
+  ul.plain li{
+    padding:10px 0 10px 0; border-top:1px solid var(--line);
+    display:flex; gap:10px; font-size:15px;
+  }
+  ul.plain li:first-child{ border-top:none; }
+  ul.plain li .m{ flex:none; color:var(--accent); font-weight:800; }
+
+  .diagram{
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:18px; overflow-x:auto;
+  }
+  .diagram pre.mermaid{ direction:ltr; margin:0; }
+
+  .chart-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .chart-card h4{ font-size:14px; margin-bottom:14px; color:var(--text-muted); font-weight:700; }
+  svg text{ fill:var(--text-muted); font-family:'Vazirmatn',Tahoma,sans-serif; }
+  svg .val{ fill:var(--text); font-weight:700; }
+
+  .phase-row{ display:grid; grid-template-columns:64px 1fr; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .phase-row:first-child{ border-top:none; }
+  .phase-badge{
+    width:48px; height:48px; border-radius:12px; background:var(--primary-tint); color:var(--primary-strong);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px;
+  }
+  .phase-row h4{ font-size:16px; margin-bottom:4px; }
+  .phase-row .meta{ font-size:13px; color:var(--accent); font-weight:700; margin-bottom:6px; }
+  .phase-row p{ font-size:14.5px; color:var(--text-muted); margin:0; }
+
+  footer{ padding:44px 0 60px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  footer p{ color:var(--text-muted); font-size:13.5px; margin:0; }
+
+  .ask-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  @media (max-width:720px){ .ask-grid{ grid-template-columns:1fr; } }
+  .ask-item{
+    background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; display:flex; gap:12px; align-items:flex-start;
+  }
+  .ask-item .no{ font-weight:800; color:var(--accent); font-size:15px; flex:none; }
+  .ask-item p{ margin:0; font-size:14.5px; }
+</style>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#opportunity">۱ بازار</a>
+    <a href="#solution">۲ راه‌حل</a>
+    <a href="#geo">۳ توسعه</a>
+    <a href="#revenue">۴ درآمد</a>
+    <a href="#fleet">۵ ناوگان</a>
+    <a href="#finance">۶ مالی</a>
+    <a href="#roadmap">۷ فازبندی</a>
+    <a href="#architecture">۸ معماری</a>
+    <a href="#software">۹ نرم‌افزار</a>
+    <a href="#infra">۱۰ زیرساخت</a>
+    <a href="#risk">۱۱ ریسک</a>
+    <a href="#licenses">۱۲ مجوزها</a>
+    <a href="#benchmark">۱۳ الگوها</a>
+    <a href="#ask">۱۴ درخواست</a>
+  </div>
+</nav>
+
+<header class="cover">
+  <div class="wrap">
+    <span class="eyebrow">🧭 پروپوزال سرمایه‌گذاری و اجرا</span>
+    <h1>دلی — پلتفرم جامع خدمات و تجربه گردشگری</h1>
+    <p class="sub">از ناوگان تاکسی گردشگری برقی در مشهد تا یک سوپراپ ملی گردشگری: مدل کسب‌وکار، معماری فنی، برنامه اجرایی و ساختار سرمایه در یک سند واحد.</p>
+    <div class="cover-meta">
+      <div><div class="k">ارائه به</div><div class="v">بانک/مؤسسه مالی و وزارت میراث فرهنگی</div></div>
+      <div><div class="k">پایلوت</div><div class="v">مشهد → شیراز → اصفهان</div></div>
+      <div><div class="k">ارزش ناوگان اولیه</div><div class="v">۳۵۰ میلیارد تومان (۱۰۰ خودرو)</div></div>
+      <div><div class="k">تاریخ</div><div class="v">۱۴۰۵/۰۶/۱۵</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- 1 -->
+  <section id="opportunity">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۱</span><h2>ضرورت بازار و فرصت</h2></div>
+      <p class="sec-lede">مشهد بزرگ‌ترین بازار گردشگری داخلی ایران است، اما بازار حمل‌ونقل هوشمند آن اشباع‌تر از تصور اولیه است. فرصت واقعی دلی در جایی است که هیچ رقیبی حاضر نیست: تاکسی گردشگری اختصاصی و یکپارچگی خدمات.</p>
+
+      <div class="grid3" style="margin-bottom:28px">
+        <div class="stat"><div class="big num">۲۷ میلیون</div><div class="lbl">زائر و گردشگر سالانه مشهد (۲ میلیون گردشگر خارجی)</div></div>
+        <div class="stat"><div class="big num">۳۱٪</div><div class="lbl">سهم بازار تپسی در مشهد — بالاتر از سهمش در تهران (۲۶٪)</div></div>
+        <div class="stat"><div class="big num">۰</div><div class="lbl">برند ملی سازمان‌یافته در بخش تاکسی گردشگری اختصاصی</div></div>
+      </div>
+
+      <div class="chart-card">
+        <h4>سهم بازار تپسی به تفکیک شهر — هرچه کمتر، بازار بازتر</h4>
+        <svg viewBox="0 0 640 200" width="100%" style="max-width:640px">
+          <!-- axis -->
+          <line x1="120" y1="10" x2="120" y2="160" stroke="var(--line)" stroke-width="1"/>
+          <line x1="120" y1="160" x2="600" y2="160" stroke="var(--line)" stroke-width="1"/>
+          <!-- bars: scale 0-35% over 440px -->
+          <!-- Mashhad 31 -->
+          <text x="60" y="42" font-size="13">مشهد</text>
+          <rect x="120" y="30" width="349" height="24" rx="4" fill="var(--critical)"/>
+          <text class="val" x="480" y="47" font-size="13">۳۱٪</text>
+          <!-- Tehran 26 -->
+          <text x="60" y="82" font-size="13">تهران</text>
+          <rect x="120" y="70" width="293" height="24" rx="4" fill="var(--warn)"/>
+          <text class="val" x="425" y="87" font-size="13">۲۶٪</text>
+          <!-- Isfahan 21 -->
+          <text x="60" y="122" font-size="13">اصفهان</text>
+          <rect x="120" y="110" width="236" height="24" rx="4" fill="var(--accent)"/>
+          <text class="val" x="368" y="127" font-size="13">۲۱٪</text>
+          <!-- Shiraz 16 -->
+          <text x="60" y="152" font-size="13" font-weight="700">شیراز</text>
+          <rect x="120" y="140" width="180" height="24" rx="4" fill="var(--good)"/>
+          <text class="val" x="312" y="157" font-size="13">۱۶٪</text>
+          <text x="120" y="178" font-size="11" fill="var(--text-muted)">۰٪</text>
+          <text x="560" y="178" font-size="11" fill="var(--text-muted)">۳۵٪</text>
+        </svg>
+      </div>
+
+      <p style="margin-top:20px">آژانس‌های مسافرتی مشهد (خاور سیر، پاژسیر، محمدزاده) و شیراز (گردشگران شیراز) عمدتاً تک‌خدمتی‌اند؛ بازار هتل مشهد تحت سلطه‌ی OTAهای بزرگ ملی است. مزیت دلی در هیچ‌کدام از این بازارها رقابت قیمتی نیست — <strong>یکپارچگی خدمات و تخصص گردشگری</strong> است.</p>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="solution" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۲</span><h2>راه‌حل — اکوسیستم دلی</h2></div>
+      <p class="sec-lede">دلی نقش «بازارگاه و زیرساخت فروش» گردشگری را ایفا می‌کند، نه رقیب مستقیم کسب‌وکارهای گردشگری. هشت خوشه‌ی خدمات زیر یک حساب کاربری واحد قرار می‌گیرند.</p>
+      <div class="grid3">
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🚕 حمل‌ونقل</div><p style="margin-top:8px;font-size:13.5px">ناوگان تاکسی گردشگری برقی اختصاصی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🏨 اقامت</div><p style="margin-top:8px;font-size:13.5px">هتل، هتل‌آپارتمان، بوم‌گردی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🗺️ سفر و تور</div><p style="margin-top:8px;font-size:13.5px">دفتر خدمات مسافرتی دلی، بسته‌های ترکیبی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🍽️ غذا</div><p style="margin-top:8px;font-size:13.5px">رستوران‌های گردشگری و محلی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🎡 تفریح</div><p style="margin-top:8px;font-size:13.5px">پارک آبی، شهربازی، مجموعه‌های تفریحی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🩺 سلامت</div><p style="margin-top:8px;font-size:13.5px">گردشگری سلامت — فقط معرفی/ترانسفر، نه ارائه خدمت درمانی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🛍️ خرید</div><p style="margin-top:8px;font-size:13.5px">بازار سنتی و صنایع‌دستی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">🎫 جاذبه/بلیت</div><p style="margin-top:8px;font-size:13.5px">بلیط هواپیما/اتوبوس (ریسلری) و جاذبه‌ها</p></div>
+      </div>
+      <div class="note" style="margin-top:24px"><strong>محدوده‌ی عمدی فاز ۱:</strong> فقط تاکسی گردشگری + سبد سفر ساده ساخته می‌شود. موتور «سبد سفر» کامل، پنل B2B، بلیط، و سلامت عمداً به فازهای بعدی موکول شده‌اند — درسی مستقیم از شکست سوپراپ‌هایی که هم‌زمان در چند حوزه گسترش یافتند.</div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="geo">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۳</span><h2>برنامه توسعه جغرافیایی</h2></div>
+      <p class="sec-lede">اولویت شهرها بر اساس بازبودن بازار حمل‌ونقل تعیین شده، نه فرض اولیه‌ی سند پیشنهادی (که تهران را شهر دوم در نظر گرفته بود).</p>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>اولویت</th><th>شهر</th><th>سهم تپسی</th><th>توجیه</th></tr>
+          <tr><td><span class="tag good">فاز ۱</span></td><td>مشهد</td><td class="num">۳۱٪</td><td>دارایی فیزیکی (ناوگان برقی)، حجم زیارتی بالا</td></tr>
+          <tr><td><span class="tag accent">فاز ۲</span></td><td>شیراز</td><td class="num">۱۶٪</td><td>بازترین بازار حمل‌ونقل؛ مقصد اصلی گردشگری تاریخی</td></tr>
+          <tr><td><span class="tag warn">فاز ۳</span></td><td>اصفهان</td><td class="num">۲۱٪</td><td>بدون رقیب آژانسی غالب — بازار پراکنده</td></tr>
+          <tr><td style="color:var(--text-muted)">کنار گذاشته شد</td><td>تهران</td><td class="num">۲۶٪</td><td>بازار اشباع‌ترین گزینه؛ مقصد تجاری نه فراغتی</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="revenue" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۴</span><h2>مدل درآمدی و تعرفه‌گذاری</h2></div>
+      <p class="sec-lede">هر نرخ کمیسیون در برابر بنچمارک واقعی بازار ایران محک خورده، نه فرضی.</p>
+      <div class="grid2">
+        <div class="table-scroll">
+          <table class="data">
+            <tr><th>خدمت</th><th>نرخ نهایی</th><th>بنچمارک بازار</th></tr>
+            <tr><td>تاکسی گردشگری</td><td class="num">۱۲٪ ← ۱۵٪</td><td>اسنپ/تپسی ۱۵٪</td></tr>
+            <tr><td>هتل/اقامت</td><td class="num">۱۲٪</td><td>میانگین ایران ~۱۴٪</td></tr>
+            <tr><td>رستوران</td><td class="num">۱۰٪</td><td>اسنپ‌فود ۱۵–۲۵٪</td></tr>
+            <tr><td>تور</td><td class="num">۱۵٪</td><td>سقف رایج آژانسی</td></tr>
+            <tr><td>بلیط</td><td class="num">۳٪</td><td>بلیط داخلی ۱–۳٪</td></tr>
+          </table>
+        </div>
+        <div class="chart-card">
+          <h4>ترکیب درآمد در سال بلوغ</h4>
+          <svg viewBox="0 0 240 240" width="100%" style="max-width:220px;display:block;margin:0 auto">
+            <g transform="translate(120,120)">
+              <!-- donut segments: accommodation27, taxi20, tour15, entertainment11, ticket10, restaurant7, health5, other5 -->
+              <!-- circumference approach using stroke-dasharray on r=80 circle, circumference ~502.4 -->
+              <circle r="80" fill="none" stroke="var(--line)" stroke-width="30"/>
+              <circle r="80" fill="none" stroke="var(--primary)" stroke-width="30" stroke-dasharray="135.6 502.4" stroke-dashoffset="0" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="var(--accent)" stroke-width="30" stroke-dasharray="100.5 502.4" stroke-dashoffset="-135.6" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="var(--good)" stroke-width="30" stroke-dasharray="75.4 502.4" stroke-dashoffset="-236.1" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="var(--warn)" stroke-width="30" stroke-dasharray="55.3 502.4" stroke-dashoffset="-311.5" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="var(--critical)" stroke-width="30" stroke-dasharray="50.2 502.4" stroke-dashoffset="-366.8" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="#8B6E4E" stroke-width="30" stroke-dasharray="35.2 502.4" stroke-dashoffset="-417" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="#6E6E8B" stroke-width="30" stroke-dasharray="25.1 502.4" stroke-dashoffset="-452.2" transform="rotate(-90)"/>
+              <circle r="80" fill="none" stroke="#999" stroke-width="30" stroke-dasharray="25.1 502.4" stroke-dashoffset="-477.3" transform="rotate(-90)"/>
+              <text text-anchor="middle" y="6" font-size="15" font-weight="800" fill="var(--text)">۱۰۰٪</text>
+            </g>
+          </svg>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12.5px;margin-top:10px">
+            <div>🟢 اقامت ۲۷٪</div><div>🟠 تاکسی ۲۰٪</div>
+            <div>🟢 تور ۱۵٪</div><div>🟡 تفریح ۱۱٪</div>
+            <div>🔴 بلیت ۱۰٪</div><div>🟤 رستوران ۷٪</div>
+            <div>⚪ سلامت ۵٪</div><div>⚪ سایر ۵٪</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:20px">حتی در سند اولیه، <strong>اقامت</strong> (نه تاکسی) بزرگ‌ترین منبع درآمد پیش‌بینی‌شده است — دقت در نرخ کمیسیون هتل اهمیتی برابر یا بیشتر از نرخ تاکسی دارد.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="fleet">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۵</span><h2>ناوگان، واردات و اقتصاد واحد خودرو</h2></div>
+      <p class="sec-lede">هر خودرو یک واحد اقتصادی مستقل است؛ ساختار سرمایه آن مبنای کل مدل بانکی طرح است.</p>
+
+      <div class="grid3" style="margin-bottom:24px">
+        <div class="stat"><div class="big num">۳٫۵ میلیارد</div><div class="lbl">قیمت هر خودرو (تومان)</div></div>
+        <div class="stat"><div class="big num">۲ میلیارد</div><div class="lbl">تسهیلات بانکی (۵۷٫۱۴٪)</div></div>
+        <div class="stat"><div class="big num">۱٫۵ میلیارد</div><div class="lbl">آورده متقاضی (۴۲٫۸۶٪) — مالکیت ۵ دانگ</div></div>
+      </div>
+
+      <h4 style="margin-bottom:12px">جریان واردات خودروی برقی</h4>
+      <div class="diagram" style="margin-bottom:28px">
+<pre class="mermaid">
+flowchart RL
+  A[انتخاب مدل خودروی برقی ۶ نفره] --> B["مجوز ثبت سفارش
+وزارت صمت"]
+  B --> C["تأیید منشأ ارز
+بانک مرکزی"]
+  C --> D["تأییدیه استاندارد ملی
++ محیط زیست"]
+  D --> E{دسته‌بندی گمرکی}
+  E -->|تمام‌برقی| F["حقوق ورودی ۴٪"]
+  E -->|برقی/بردافزا| G["حقوق ورودی ۱۰۰٪ تا پایان ۱۴۰۵"]
+  F --> H[ترخیص و شماره‌گذاری با پلاک عمومی]
+  G --> H
+  H --> I[بیمه شخص ثالث + معاینه فنی]
+  I --> J[ورود به شبکه دلی]
+</pre>
+      </div>
+      <div class="note risk" style="margin-bottom:28px"><strong>نکته مالی حیاتی:</strong> تفاوت قیمت تمام‌شده بین دسته‌بندی ۴٪ و ۱۰۰٪ حقوق ورودی می‌تواند چند برابر باشد و مستقیماً روی رقم ۳٫۵ میلیارد تومانی اثر بگذارد — استعلام گمرکی دقیق پیش از هر تصمیم مالی نهایی الزامی است.</div>
+
+      <h4 style="margin-bottom:12px">اقتصاد ماهانه‌ی هر خودرو (سناریوی پایه)</h4>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>آیتم</th><th>مبلغ ماهانه (تومان)</th></tr>
+          <tr><td>درآمد ناخالص (۷ میلیون × ۲۶ روز)</td><td class="num">۱۸۲,۰۰۰,۰۰۰</td></tr>
+          <tr><td>کمیسیون دلی (۱۲٪)</td><td class="num">۲۱,۸۴۰,۰۰۰</td></tr>
+          <tr><td>سوخت/انرژی، بیمه، تعمیرات، شست‌وشو، ذخیره</td><td class="num">۴۰,۰۰۰,۰۰۰</td></tr>
+          <tr><td>درآمد مالک پیش از قسط</td><td class="num" style="font-weight:700">۱۲۰,۱۶۰,۰۰۰</td></tr>
+          <tr><td>قسط نمونه (۲۳٪، ۶۰ ماه)</td><td class="num">۵۶,۳۸۰,۹۴۲</td></tr>
+          <tr><td>مانده خالص مالک پس از قسط</td><td class="num" style="font-weight:700;color:var(--good)">۶۳,۷۷۹,۰۵۸</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="finance" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۶</span><h2>ساختار سرمایه و مدل مالی پنج‌ساله</h2></div>
+      <p class="sec-lede">پیشنهاد اصلی به بانک: پرداخت تسهیلات مرحله‌ای، نه یکجا — مستقیماً برای مدیریت ریسک نکول.</p>
+
+      <div class="chart-card" style="margin-bottom:24px">
+        <h4>رشد ناوگان و GMV حمل‌ونقل (میلیارد تومان)</h4>
+        <svg viewBox="0 0 640 220" width="100%" style="max-width:640px">
+          <line x1="70" y1="10" x2="70" y2="180" stroke="var(--line)"/>
+          <line x1="70" y1="180" x2="610" y2="180" stroke="var(--line)"/>
+          <!-- 5 bars GMV: 218.4,546,1092,1638,2184 scaled to max 2184 -> 150px -->
+          <!-- x positions -->
+          <g font-size="12">
+            <rect x="100" y="169" width="50" height="11" fill="var(--primary)"/>
+            <text x="105" y="200">سال ۱</text>
+            <text class="val" x="95" y="162">۲۱۸</text>
+
+            <rect x="200" y="146" width="50" height="34" fill="var(--primary)"/>
+            <text x="205" y="200">سال ۲</text>
+            <text class="val" x="195" y="139">۵۴۶</text>
+
+            <rect x="300" y="105" width="50" height="75" fill="var(--primary)"/>
+            <text x="305" y="200">سال ۳</text>
+            <text class="val" x="292" y="98">۱٬۰۹۲</text>
+
+            <rect x="400" y="63" width="50" height="117" fill="var(--primary)"/>
+            <text x="405" y="200">سال ۴</text>
+            <text class="val" x="392" y="56">۱٬۶۳۸</text>
+
+            <rect x="500" y="30" width="50" height="150" fill="var(--accent)"/>
+            <text x="505" y="200">سال ۵</text>
+            <text class="val" x="492" y="23">۲٬۱۸۴</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>سال</th><th>تعداد خودرو</th><th>GMV حمل‌ونقل (میلیارد)</th><th>درآمد دلی از حمل‌ونقل (میلیارد)</th></tr>
+          <tr><td>۱</td><td class="num">۱۰۰</td><td class="num">۲۱۸٫۴</td><td class="num">۲۶٫۲</td></tr>
+          <tr><td>۲</td><td class="num">۲۵۰</td><td class="num">۵۴۶</td><td class="num">۶۵٫۵</td></tr>
+          <tr><td>۳</td><td class="num">۵۰۰</td><td class="num">۱٬۰۹۲</td><td class="num">۱۳۱</td></tr>
+          <tr><td>۴</td><td class="num">۷۵۰</td><td class="num">۱٬۶۳۸</td><td class="num">۱۹۶٫۶</td></tr>
+          <tr><td>۵</td><td class="num">۱٬۰۰۰</td><td class="num">۲٬۱۸۴</td><td class="num">۲۶۲٫۱</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:16px;font-size:13.5px;color:var(--text-muted)">سناریو بر پایه‌ی درآمد روزانه ۷ میلیون تومان و ۲۶ روز فعالیت است؛ پیش‌بینی قطعی نیست و باید پس از داده‌ی پایلوت بازکالیبره شود.</p>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۷</span><h2>فازبندی اجرایی</h2></div>
+      <p class="sec-lede">شش فاز از تصمیم‌گیری حقوقی تا مقیاس ملی — هر فاز معیار خروج شفاف دارد.</p>
+
+      <div class="diagram" style="margin-bottom:28px">
+<pre class="mermaid">
+gantt
+  dateFormat  YYYY-MM
+  axisFormat  %b %y
+  section فاز ۰-۱
+  حقوقی و تصمیم‌گیری :a1, 2026-09, 2M
+  ساخت MVP فنی        :a2, after a1, 5M
+  section فاز ۲-۳
+  پایلوت ۱۰۰ خودرو مشهد :a3, after a2, 8M
+  گسترش خوشه خدمات       :a4, after a2, 7M
+  section فاز ۴-۵
+  توسعه چندشهری (شیراز→اصفهان) :a5, after a3, 30M
+  گردشگری سلامت و گردشگر خارجی :a6, after a5, 12M
+</pre>
+      </div>
+
+      <div>
+        <div class="phase-row"><div class="phase-badge">۰</div><div><h4>پیش‌نیاز حقوقی و تصمیمی</h4><div class="meta">۱ تا ۲ ماه</div><p>استعلام مجوزها، دسته‌بندی گمرکی، تعرفه‌ی نهایی، تماس اولیه با وزارتخانه و بانک.</p></div></div>
+        <div class="phase-row"><div class="phase-badge">۱</div><div><h4>ساخت MVP فنی</h4><div class="meta">۴ تا ۶ ماه</div><p>تشکیل تیم، ۱۰ اسپرینت مهندسی، اپ مسافر/راننده، پنل مدیریت.</p></div></div>
+        <div class="phase-row"><div class="phase-badge">۲</div><div><h4>پایلوت ۱۰۰ خودرو مشهد</h4><div class="meta">۶ تا ۱۰ ماه</div><p>تأمین مالی، جذب راننده و عرضه‌کننده، جمع‌آوری KPI واقعی.</p></div></div>
+        <div class="phase-row"><div class="phase-badge">۳</div><div><h4>گسترش خوشه خدمات</h4><div class="meta">۶ تا ۹ ماه، هم‌پوشان</div><p>هتل واقعی، بلیط ریسلری، پنل B2B، سبد سفر.</p></div></div>
+        <div class="phase-row"><div class="phase-badge">۴</div><div><h4>توسعه چندشهری</h4><div class="meta">۳ تا ۴ سال</div><p>شیراز سپس اصفهان، تسهیلات مرحله‌ای ۱۰۰←۱۵۰←۲۵۰.</p></div></div>
+        <div class="phase-row"><div class="phase-badge">۵</div><div><h4>سلامت و گردشگر خارجی</h4><div class="meta">محرک: راه‌اندازی شیراز</div><p>پرریسک‌ترین فاز، فقط پس از تثبیت کامل فازهای قبلی.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section id="architecture" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۸</span><h2>معماری فنی</h2></div>
+      <p class="sec-lede">پشته‌ی فناوری تأییدشده، برگرفته از الگوهای واقعی رقبا (اسنپ، Doctoreto) و متناسب‌سازی‌شده با مقیاس دلی.</p>
+
+      <div class="diagram" style="margin-bottom:24px">
+<pre class="mermaid">
+flowchart TB
+  C["کلاینت
+اپ مسافر / راننده / پنل مدیریت"] -->|REST HTTPS| GW["API Gateway"]
+  GW -->|gRPC| D["سرویس دیسپچ
+NestJS + WebSocket"]
+  GW -->|gRPC| B["سرویس رزرو و مدیریت
+PHP/Laravel"]
+  D <-->|Redis Geo + صف پیام| R[(Redis)]
+  B <--> PG[(PostgreSQL)]
+  D <--> PG
+  B -->|Setshare API| ZP["درگاه پرداخت
+زرین‌پال"]
+  D -->|API| MAP["نقشه
+نشان/بلد"]
+</pre>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h4 style="margin-bottom:10px;font-size:15px">تصمیمات نهایی</h4>
+          <ul class="plain">
+            <li><span class="m">◆</span>بک‌اند دیسپچ: NestJS/TypeScript (نه Go — تناسب با مقیاس پایلوت و بازار کار مشهد)</li>
+            <li><span class="m">◆</span>بک‌اند رزرو/پرداخت: PHP/Laravel (مطابق Doctoreto)</li>
+            <li><span class="m">◆</span>اپ‌ها: React Native؛ پنل مدیریت: Next.js</li>
+            <li><span class="m">◆</span>دیتابیس: PostgreSQL + Redis</li>
+            <li><span class="m">◆</span>مدیریت اسرار: SOPS + age (مطابق ابزار واقعی اسنپ)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom:10px;font-size:15px">آگاهانه رد شد (فعلاً زودهنگام)</h4>
+          <ul class="plain">
+            <li><span class="m">✕</span>مونوریپوی Bazel (الگوی Booking.com)</li>
+            <li><span class="m">✕</span>عملگر سفارشی Kubernetes و Chaos Engineering (الگوی اسنپ)</li>
+            <li><span class="m">✕</span>Elasticsearch پیش از فاز ۵ (جست‌وجوی چندزبانه)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section id="software">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۹</span><h2>الگوریتم‌های هسته و فازبندی مهندسی</h2></div>
+      <p class="sec-lede">فاز ۱ به ۱۰ اسپرینت عملیاتی شکسته شده؛ سه الگوریتم هسته قلب MVP هستند.</p>
+      <div class="grid3" style="margin-bottom:28px">
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text);margin-bottom:6px">الگوریتم دیسپچ</div><p style="font-size:13.5px;margin:0">جست‌وجوی geo-radius فزاینده، رتبه‌بندی بر مبنای زمان رسیدن و امتیاز، قفل توزیع‌شده برای جلوگیری از تخصیص دوگانه.</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text);margin-bottom:6px">الگوریتم رزرو</div><p style="font-size:13.5px;margin:0">قفل بدبینانه‌ی دیتابیس (SELECT FOR UPDATE) برای جلوگیری از double-booking هتل/تور.</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text);margin-bottom:6px">الگوریتم تسویه</div><p style="font-size:13.5px;margin:0">نرخ کمیسیون در سطح تراکنش ذخیره می‌شود، نه تنظیمات کلی — تاریخچه‌ی نرخ محفوظ می‌ماند.</p></div>
+      </div>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>اسپرینت</th><th>محتوا</th><th>خروجی</th></tr>
+          <tr><td class="num">۰</td><td>راه‌اندازی مخزن، CI/CD، محیط‌ها</td><td>پروژه قابل‌دیپلوی</td></tr>
+          <tr><td class="num">۱–۲</td><td>مدل داده هسته، Auth، ساختار دو سرویس</td><td>API پایه فعال</td></tr>
+          <tr><td class="num">۳–۴</td><td>الگوریتم دیسپچ، WebSocket، Redis geo</td><td>تخصیص راننده در محیط تست</td></tr>
+          <tr><td class="num">۵–۶</td><td>اپ مسافر و راننده</td><td>نسخه نصب‌شدنی</td></tr>
+          <tr><td class="num">۷–۸</td><td>پرداخت زرین‌پال، رزرو، تسویه</td><td>تراکنش end-to-end کامل</td></tr>
+          <tr><td class="num">۹–۱۰</td><td>پنل مدیریت، تست امنیتی، رفع باگ</td><td>نسخه آماده پایلوت</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="infra" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۰</span><h2>زیرساخت، پرداخت و امنیت تسویه‌حساب</h2></div>
+      <p class="sec-lede">تسویه‌ی بین مسافر، دلی و راننده/عرضه‌کننده باید از مسیر یک PSP دارای مجوز عبور کند، نه کیف‌پول اختصاصی دلی.</p>
+
+      <div class="diagram" style="margin-bottom:24px">
+<pre class="mermaid">
+flowchart RL
+  U["پرداخت مسافر"] --> ZP["زرین‌پال — سرویس Setshare"]
+  ZP -->|"سهم کمیسیون (۱۲٪)"| DALI["حساب دلی"]
+  ZP -->|"سهم راننده/عرضه‌کننده"| DR["حساب راننده / هتل / رستوران (شبا)"]
+</pre>
+      </div>
+
+      <div class="grid2" style="margin-bottom:24px">
+        <div class="note"><strong>سرویس Setshare زرین‌پال:</strong> در همان لحظه‌ی پرداخت، مبلغ بر اساس نسبت از‌پیش‌تعریف‌شده بین دلی و ذی‌نفعان تقسیم می‌شود — نیازی به جابه‌جایی دستی پول نیست.</div>
+        <div class="note risk"><strong>هشدار مستند:</strong> شکایات کاربران کیف‌پول «آپ» درباره‌ی برداشت بدون اجازه؛ هر برداشت باید نیازمند تأیید صریح کاربر باشد.</div>
+      </div>
+
+      <h4 style="margin-bottom:12px;font-size:15px">چک‌لیست زیرساخت</h4>
+      <div class="grid3">
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">محیط‌ها</div><p style="font-size:13px;margin-top:6px">Dev / Staging / Production</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">ابر</div><p style="font-size:13px;margin-top:6px">ابر آروان، PostgreSQL مدیریت‌شده، Object Storage، CDN</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">CI/CD</div><p style="font-size:13px;margin-top:6px">Pipeline خودکار، SOPS+age، اسکن secret leak</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">مانیتورینگ</div><p style="font-size:13px;margin-top:6px">لاگ متمرکز، هشدار خودکار خرابی</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">سرویس بیرونی</div><p style="font-size:13px;margin-top:6px">زرین‌پال، نشان/بلد، پیامک OTP</p></div>
+        <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text)">امنیت</div><p style="font-size:13px;margin-top:6px">bcrypt/argon2، تست نفوذ پیش از پایلوت</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section id="risk">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۱</span><h2>تحلیل ریسک</h2></div>
+      <p class="sec-lede">هر ریسک زیر مبتنی بر یک حادثه‌ی واقعی و مستند در بازار است، نه فرض نظری.</p>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>ریسک</th><th>شاهد واقعی</th><th>کنترل پیشنهادی</th></tr>
+          <tr><td>تأمین مالی خودرو بدون تست پایلوت</td><td>شکست Uber Xchange؛ نرخ بهره واقعی تا ۲۲٫۷۵٪، ضرر ۹۰۰۰ دلار/خودرو</td><td>تسهیلات مرحله‌ای ۱۰۰←۱۵۰←۲۵۰</td></tr>
+          <tr><td>نشت داده کاربر</td><td>هک اسنپ‌فود؛ ۲۰ میلیون کاربر، همان مهاجم تپسی</td><td>هش bcrypt/argon2، پایش تهدید مداوم</td></tr>
+          <tr><td>سرقت سورس‌کد</td><td>هک علی‌بابا؛ داده کاربر + سورس‌کد</td><td>مخزن private، مدیریت اسرار SOPS+age</td></tr>
+          <tr><td>برداشت غیرمجاز از کیف‌پول</td><td>شکایات کاربران کیف‌پول آپ</td><td>تأیید صریح کاربر برای هر برداشت</td></tr>
+          <tr><td>Double-booking رزرو</td><td>الگوی شناخته‌شده race condition در OTAها</td><td>قفل بدبینانه دیتابیس از روز اول</td></tr>
+          <tr><td>گسترش هم‌زمان در چند خوشه</td><td>الگوی شکست سوپراپ‌های نامتمرکز</td><td>فازبندی سخت‌گیرانه، محدوده عمدی فاز ۱</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 -->
+  <section id="licenses" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۲</span><h2>مجوزها و الزامات قانونی</h2></div>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>مجوز</th><th>مرجع</th><th>وضعیت</th></tr>
+          <tr><td>دفتر خدمات مسافرتی (بند ب)</td><td>وزارت میراث فرهنگی</td><td><span class="tag good">موجود</span></td></tr>
+          <tr><td>پروانه کسب‌وکار مجازی + اینماد</td><td>اتحادیه کشوری کسب‌وکارهای مجازی</td><td><span class="tag warn">نیاز به استعلام</span></td></tr>
+          <tr><td>مجوز نظام صنفی رایانه‌ای</td><td>سازمان نظام صنفی رایانه‌ای</td><td><span class="tag warn">نیاز به استعلام</span></td></tr>
+          <tr><td>ثبت نرم‌افزار</td><td>وزارت فرهنگ و ارشاد</td><td><span class="tag accent">اقدام در فاز ۱</span></td></tr>
+          <tr><td>پلاک عمومی، بیمه، معاینه فنی</td><td>راهور / بیمه مرکزی</td><td><span class="tag accent">به‌ازای هر خودرو</span></td></tr>
+          <tr><td>ثبت سفارش واردات + استاندارد</td><td>وزارت صمت، بانک مرکزی، استاندارد</td><td><span class="tag crit">نیاز استعلام گمرکی دقیق</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 -->
+  <section id="benchmark">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۳</span><h2>الگوهای تطبیقی</h2></div>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>الگو</th><th>درس اصلی</th></tr>
+          <tr><td>Grab</td><td>حتی موفق‌ترین سوپراپ منطقه بیش از یک دهه طول کشید تا سودآور شود</td></tr>
+          <tr><td>GoTo/Gojek</td><td>انضباط هزینه و تمرکز جغرافیایی، عامل بازگشت به سودآوری</td></tr>
+          <tr><td>Careem</td><td>نزدیک‌ترین الگوی موفق منطقه‌ای با ساختار مشابه دلی</td></tr>
+          <tr><td>Snapp</td><td>مسیر اثبات‌شده‌ی تاکسی → سوپراپ، طی چند سال و مرحله‌ای</td></tr>
+          <tr><td>Alibaba.ir</td><td>مدل OTA ایرانی بدون وابستگی به زیرساخت بین‌المللی مقیاس‌پذیر است</td></tr>
+          <tr><td>Paziresh24</td><td>تمرکز روی یک مسئله، نه گستردگی، عامل رهبری بازار</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="ask" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۴</span><h2>جمع‌بندی و درخواست از بانک/وزارتخانه</h2></div>
+      <div class="ask-grid">
+        <div class="ask-item"><span class="no">۱</span><p>بررسی کارشناسی طرح و اعلام نظر درباره‌ی امکان اجرای پایلوت در مشهد</p></div>
+        <div class="ask-item"><span class="no">۲</span><p>تسهیل ارتباط با اداره‌کل میراث فرهنگی خراسان رضوی</p></div>
+        <div class="ask-item"><span class="no">۳</span><p>بررسی مدل تأمین مالی مرحله‌ای (۱۰۰ ← ۱۵۰ ← ۲۵۰ دستگاه)</p></div>
+        <div class="ask-item"><span class="no">۴</span><p>تشکیل کارگروه مشترک برای قرارداد سه‌جانبه</p></div>
+        <div class="ask-item"><span class="no">۵</span><p>بررسی توسعه‌ی مدل به شیراز و اصفهان پس از موفقیت پایلوت</p></div>
+        <div class="ask-item"><span class="no">۶</span><p>تسهیل استعلام مجوز تاکسی اینترنتی و دسته‌بندی گمرکی خودرو</p></div>
+      </div>
+      <p style="margin-top:24px">دلی آماده است مدل تفصیلی مالی، معماری کامل سامانه، قراردادهای پیشنهادی، استاندارد خودرو و راننده، و برنامه‌ی اجرایی پایلوت را در جلسه‌ی کارشناسی ارائه دهد.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>شرکت دلی (DALI) — دفتر خدمات مسافرتی مجاز · پروپوزال سرمایه‌گذاری و اجرا · ۱۴۰۵/۰۶/۱۵</p>
+    <p>مبتنی بر ۱۶ سند تحلیلی و فنی پروژه</p>
+  </div>
+</footer>
