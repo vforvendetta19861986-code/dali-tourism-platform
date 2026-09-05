@@ -219,15 +219,20 @@
     <a href="#geo">۳ توسعه</a>
     <a href="#revenue">۴ درآمد</a>
     <a href="#fleet">۵ ناوگان</a>
-    <a href="#finance">۶ مالی</a>
-    <a href="#roadmap">۷ فازبندی</a>
-    <a href="#architecture">۸ معماری</a>
-    <a href="#software">۹ نرم‌افزار</a>
-    <a href="#infra">۱۰ زیرساخت</a>
-    <a href="#risk">۱۱ ریسک</a>
-    <a href="#licenses">۱۲ مجوزها</a>
-    <a href="#benchmark">۱۳ الگوها</a>
-    <a href="#ask">۱۴ درخواست</a>
+    <a href="#finance">۶ مالی ۵ساله</a>
+    <a href="#capex">۷ بودجه پلتفرم</a>
+    <a href="#jobs">۸ اشتغال</a>
+    <a href="#roadmap">۹ فازبندی</a>
+    <a href="#architecture">۱۰ معماری</a>
+    <a href="#software">۱۱ نرم‌افزار</a>
+    <a href="#infra">۱۲ زیرساخت</a>
+    <a href="#risk">۱۳ ریسک</a>
+    <a href="#licenses">۱۴ مجوزها</a>
+    <a href="#bankdocs">۱۵ مدارک بانکی</a>
+    <a href="#governance">۱۶ حاکمیت</a>
+    <a href="#kpi">۱۷ KPI</a>
+    <a href="#benchmark">۱۸ الگوها</a>
+    <a href="#ask">۱۹ درخواست</a>
   </div>
 </nav>
 
@@ -260,34 +265,47 @@
       </div>
 
       <div class="chart-card">
-        <h4>سهم بازار تپسی به تفکیک شهر — هرچه کمتر، بازار بازتر</h4>
-        <svg viewBox="0 0 640 200" width="100%" style="max-width:640px">
-          <!-- axis -->
-          <line x1="120" y1="10" x2="120" y2="160" stroke="var(--line)" stroke-width="1"/>
-          <line x1="120" y1="160" x2="600" y2="160" stroke="var(--line)" stroke-width="1"/>
-          <!-- bars: scale 0-35% over 440px -->
+        <h4>سهم بازار تپسی به تفکیک شهر (۱۴۰۴) — هرچه کمتر، بازار بازتر برای دلی</h4>
+        <svg viewBox="0 0 640 230" width="100%" style="max-width:640px">
+          <!-- gridlines every 5% from 0 to 35, scale: 12px per % -->
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="120" y1="20" x2="120" y2="170"/>
+            <line x1="180" y1="20" x2="180" y2="170"/>
+            <line x1="240" y1="20" x2="240" y2="170"/>
+            <line x1="300" y1="20" x2="300" y2="170"/>
+            <line x1="360" y1="20" x2="360" y2="170"/>
+            <line x1="420" y1="20" x2="420" y2="170"/>
+          </g>
+          <g font-size="11" fill="var(--text-muted)">
+            <text x="116" y="185" text-anchor="middle">۰</text>
+            <text x="176" y="185" text-anchor="middle">۵</text>
+            <text x="236" y="185" text-anchor="middle">۱۰</text>
+            <text x="296" y="185" text-anchor="middle">۱۵</text>
+            <text x="356" y="185" text-anchor="middle">۲۰</text>
+            <text x="416" y="185" text-anchor="middle">۲۵</text>
+            <text x="436" y="200" text-anchor="start">درصد سهم بازار</text>
+          </g>
+          <line x1="120" y1="170" x2="440" y2="170" stroke="var(--text-muted)" stroke-width="1.2"/>
           <!-- Mashhad 31 -->
-          <text x="60" y="42" font-size="13">مشهد</text>
-          <rect x="120" y="30" width="349" height="24" rx="4" fill="var(--critical)"/>
-          <text class="val" x="480" y="47" font-size="13">۳۱٪</text>
+          <text x="105" y="42" font-size="13" text-anchor="end" font-weight="700">مشهد</text>
+          <rect x="120" y="30" width="372" height="22" rx="4" fill="var(--critical)"/>
+          <text class="val" x="500" y="46" font-size="13">۳۱٪ — فاز ۱ (اشباع‌ترین)</text>
           <!-- Tehran 26 -->
-          <text x="60" y="82" font-size="13">تهران</text>
-          <rect x="120" y="70" width="293" height="24" rx="4" fill="var(--warn)"/>
-          <text class="val" x="425" y="87" font-size="13">۲۶٪</text>
+          <text x="105" y="79" font-size="13" text-anchor="end">تهران</text>
+          <rect x="120" y="67" width="312" height="22" rx="4" fill="var(--warn)"/>
+          <text class="val" x="440" y="83" font-size="13">۲۶٪ — کنار گذاشته شد</text>
           <!-- Isfahan 21 -->
-          <text x="60" y="122" font-size="13">اصفهان</text>
-          <rect x="120" y="110" width="236" height="24" rx="4" fill="var(--accent)"/>
-          <text class="val" x="368" y="127" font-size="13">۲۱٪</text>
+          <text x="105" y="116" font-size="13" text-anchor="end">اصفهان</text>
+          <rect x="120" y="104" width="252" height="22" rx="4" fill="var(--accent)"/>
+          <text class="val" x="380" y="120" font-size="13">۲۱٪ — فاز ۳</text>
           <!-- Shiraz 16 -->
-          <text x="60" y="152" font-size="13" font-weight="700">شیراز</text>
-          <rect x="120" y="140" width="180" height="24" rx="4" fill="var(--good)"/>
-          <text class="val" x="312" y="157" font-size="13">۱۶٪</text>
-          <text x="120" y="178" font-size="11" fill="var(--text-muted)">۰٪</text>
-          <text x="560" y="178" font-size="11" fill="var(--text-muted)">۳۵٪</text>
+          <text x="105" y="153" font-size="13" text-anchor="end" font-weight="700">شیراز</text>
+          <rect x="120" y="141" width="192" height="22" rx="4" fill="var(--good)"/>
+          <text class="val" x="320" y="157" font-size="13">۱۶٪ — فاز ۲ (بازترین)</text>
         </svg>
       </div>
 
-      <p style="margin-top:20px">آژانس‌های مسافرتی مشهد (خاور سیر، پاژسیر، محمدزاده) و شیراز (گردشگران شیراز) عمدتاً تک‌خدمتی‌اند؛ بازار هتل مشهد تحت سلطه‌ی OTAهای بزرگ ملی است. مزیت دلی در هیچ‌کدام از این بازارها رقابت قیمتی نیست — <strong>یکپارچگی خدمات و تخصص گردشگری</strong> است.</p>
+      <p style="margin-top:20px">آژانس‌های مسافرتی مشهد (خاور سیر، پاژسیر، محمدزاده) و شیراز (گردشگران شیراز) عمدتاً تک‌خدمتی‌اند؛ بازار هتل مشهد تحت سلطه‌ی OTAهای بزرگ ملی است. مزیت دلی در هیچ‌کدام از این بازارها رقابت قیمتی نیست — <strong>یکپارچگی خدمات و تخصص گردشگری</strong> است. منبع: بررسی رقبای مستقیم مشهد/اصفهان/شیراز، سند ۰۴ و ۰۶ پروژه.</p>
     </div>
   </section>
 
@@ -344,32 +362,20 @@
           </table>
         </div>
         <div class="chart-card">
-          <h4>ترکیب درآمد در سال بلوغ</h4>
-          <svg viewBox="0 0 240 240" width="100%" style="max-width:220px;display:block;margin:0 auto">
-            <g transform="translate(120,120)">
-              <!-- donut segments: accommodation27, taxi20, tour15, entertainment11, ticket10, restaurant7, health5, other5 -->
-              <!-- circumference approach using stroke-dasharray on r=80 circle, circumference ~502.4 -->
-              <circle r="80" fill="none" stroke="var(--line)" stroke-width="30"/>
-              <circle r="80" fill="none" stroke="var(--primary)" stroke-width="30" stroke-dasharray="135.6 502.4" stroke-dashoffset="0" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="var(--accent)" stroke-width="30" stroke-dasharray="100.5 502.4" stroke-dashoffset="-135.6" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="var(--good)" stroke-width="30" stroke-dasharray="75.4 502.4" stroke-dashoffset="-236.1" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="var(--warn)" stroke-width="30" stroke-dasharray="55.3 502.4" stroke-dashoffset="-311.5" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="var(--critical)" stroke-width="30" stroke-dasharray="50.2 502.4" stroke-dashoffset="-366.8" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="#8B6E4E" stroke-width="30" stroke-dasharray="35.2 502.4" stroke-dashoffset="-417" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="#6E6E8B" stroke-width="30" stroke-dasharray="25.1 502.4" stroke-dashoffset="-452.2" transform="rotate(-90)"/>
-              <circle r="80" fill="none" stroke="#999" stroke-width="30" stroke-dasharray="25.1 502.4" stroke-dashoffset="-477.3" transform="rotate(-90)"/>
-              <text text-anchor="middle" y="6" font-size="15" font-weight="800" fill="var(--text)">۱۰۰٪</text>
-            </g>
-          </svg>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12.5px;margin-top:10px">
-            <div>🟢 اقامت ۲۷٪</div><div>🟠 تاکسی ۲۰٪</div>
-            <div>🟢 تور ۱۵٪</div><div>🟡 تفریح ۱۱٪</div>
-            <div>🔴 بلیت ۱۰٪</div><div>🟤 رستوران ۷٪</div>
-            <div>⚪ سلامت ۵٪</div><div>⚪ سایر ۵٪</div>
+          <h4>ترکیب درآمد دلی در سال بلوغ (٪ از کل درآمد کمیسیونی)</h4>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">اقامت</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:27%;height:100%;background:var(--primary)"></div></div><span class="val num" style="width:38px;font-size:13px">۲۷٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">تاکسی</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:20%;height:100%;background:var(--accent)"></div></div><span class="val num" style="width:38px;font-size:13px">۲۰٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">تور</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:15%;height:100%;background:var(--good)"></div></div><span class="val num" style="width:38px;font-size:13px">۱۵٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">تفریح</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:11%;height:100%;background:var(--warn)"></div></div><span class="val num" style="width:38px;font-size:13px">۱۱٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">بلیط</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:10%;height:100%;background:var(--critical)"></div></div><span class="val num" style="width:38px;font-size:13px">۱۰٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">رستوران</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:7%;height:100%;background:#8B6E4E"></div></div><span class="val num" style="width:38px;font-size:13px">۷٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">سلامت</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:5%;height:100%;background:#6E6E8B"></div></div><span class="val num" style="width:38px;font-size:13px">۵٪</span></div>
+            <div style="display:flex;align-items:center;gap:10px"><span style="width:88px;font-size:13px">سایر</span><div style="flex:1;background:var(--line);border-radius:6px;overflow:hidden;height:16px"><div style="width:5%;height:100%;background:#999"></div></div><span class="val num" style="width:38px;font-size:13px">۵٪</span></div>
           </div>
         </div>
       </div>
-      <p style="margin-top:20px">حتی در سند اولیه، <strong>اقامت</strong> (نه تاکسی) بزرگ‌ترین منبع درآمد پیش‌بینی‌شده است — دقت در نرخ کمیسیون هتل اهمیتی برابر یا بیشتر از نرخ تاکسی دارد.</p>
+      <p style="margin-top:20px">حتی در سند اولیه، <strong>اقامت</strong> (نه تاکسی) بزرگ‌ترین منبع درآمد پیش‌بینی‌شده است — دقت در نرخ کمیسیون هتل اهمیتی برابر یا بیشتر از نرخ تاکسی دارد. (منبع ترکیب: سند دوم پروپوزال اولیه کارفرما، سناریوی سال بلوغ)</p>
     </div>
   </section>
 
@@ -418,6 +424,19 @@ flowchart RL
           <tr><td>مانده خالص مالک پس از قسط</td><td class="num" style="font-weight:700;color:var(--good)">۶۳,۷۷۹,۰۵۸</td></tr>
         </table>
       </div>
+
+      <h4 style="margin:28px 0 12px">ارزش اسمی مالکیت به تفکیک مقیاس ناوگان</h4>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>ناوگان (دستگاه)</th><th>ارزش کل خودروها</th><th>تسهیلات</th><th>آورده متقاضیان</th><th>ارزش اسمی سهم ۱ دانگ دلی (کل)</th><th>ارزش اسمی سهم ۵ دانگ متقاضیان</th></tr>
+          <tr><td class="num">۱۰۰</td><td class="num">۳۵۰ میلیارد</td><td class="num">۲۰۰ میلیارد</td><td class="num">۱۵۰ میلیارد</td><td class="num">۵۸٫۳ میلیارد</td><td class="num">۲۹۱٫۷ میلیارد</td></tr>
+          <tr><td class="num">۳۰۰</td><td class="num">۱٬۰۵۰ میلیارد</td><td class="num">۶۰۰ میلیارد</td><td class="num">۴۵۰ میلیارد</td><td class="num">۱۷۵ میلیارد</td><td class="num">۸۷۵ میلیارد</td></tr>
+          <tr><td class="num">۶۰۰</td><td class="num">۲٬۱۰۰ میلیارد</td><td class="num">۱٬۲۰۰ میلیارد</td><td class="num">۹۰۰ میلیارد</td><td class="num">۳۵۰ میلیارد</td><td class="num">۱٬۷۵۰ میلیارد</td></tr>
+          <tr><td class="num">۱٬۰۰۰</td><td class="num">۳٬۵۰۰ میلیارد</td><td class="num">۲٬۰۰۰ میلیارد</td><td class="num">۱٬۵۰۰ میلیارد</td><td class="num">۵۸۳٫۳ میلیارد</td><td class="num">۲٬۹۱۶٫۷ میلیارد</td></tr>
+          <tr><td class="num">۱٬۵۰۰</td><td class="num">۵٬۲۵۰ میلیارد</td><td class="num">۳٬۰۰۰ میلیارد</td><td class="num">۲٬۲۵۰ میلیارد</td><td class="num">۸۷۵ میلیارد</td><td class="num">۴٬۳۷۵ میلیارد</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-muted)">ارزش اسمی یک دانگ (۱ در ۶ ارزش خودرو) سود قطعی یا ارزش نقدشونده‌ی تضمین‌شده نیست؛ به استهلاک، بدهی/وثیقه و محدودیت انتقال بستگی دارد. مبالغ به تومان.</p>
     </div>
   </section>
 
@@ -428,32 +447,44 @@ flowchart RL
       <p class="sec-lede">پیشنهاد اصلی به بانک: پرداخت تسهیلات مرحله‌ای، نه یکجا — مستقیماً برای مدیریت ریسک نکول.</p>
 
       <div class="chart-card" style="margin-bottom:24px">
-        <h4>رشد ناوگان و GMV حمل‌ونقل (میلیارد تومان)</h4>
-        <svg viewBox="0 0 640 220" width="100%" style="max-width:640px">
-          <line x1="70" y1="10" x2="70" y2="180" stroke="var(--line)"/>
-          <line x1="70" y1="180" x2="610" y2="180" stroke="var(--line)"/>
-          <!-- 5 bars GMV: 218.4,546,1092,1638,2184 scaled to max 2184 -> 150px -->
-          <!-- x positions -->
+        <h4>رشد GMV حمل‌ونقل به تفکیک سال (میلیارد تومان) — مقیاس ۰ تا ۲٬۲۰۰</h4>
+        <svg viewBox="0 0 640 230" width="100%" style="max-width:640px">
+          <!-- y gridlines at 0,500,1000,1500,2000 -> plot area 20..170 (150px = 2200) -->
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="70" y1="170" x2="610" y2="170"/>
+            <line x1="70" y1="136" x2="610" y2="136"/>
+            <line x1="70" y1="102" x2="610" y2="102"/>
+            <line x1="70" y1="68" x2="610" y2="68"/>
+            <line x1="70" y1="34" x2="610" y2="34"/>
+          </g>
+          <g font-size="11" fill="var(--text-muted)">
+            <text x="60" y="174" text-anchor="end">۰</text>
+            <text x="60" y="140" text-anchor="end">۵۰۰</text>
+            <text x="60" y="106" text-anchor="end">۱۰۰۰</text>
+            <text x="60" y="72" text-anchor="end">۱۵۰۰</text>
+            <text x="60" y="38" text-anchor="end">۲۰۰۰</text>
+          </g>
+          <line x1="70" y1="20" x2="70" y2="170" stroke="var(--text-muted)" stroke-width="1.2"/>
           <g font-size="12">
-            <rect x="100" y="169" width="50" height="11" fill="var(--primary)"/>
-            <text x="105" y="200">سال ۱</text>
-            <text class="val" x="95" y="162">۲۱۸</text>
+            <rect x="100" y="155" width="50" height="15" fill="var(--primary)"/>
+            <text x="107" y="195">سال ۱</text>
+            <text class="val" x="93" y="148" text-anchor="middle">۲۱۸</text>
 
-            <rect x="200" y="146" width="50" height="34" fill="var(--primary)"/>
-            <text x="205" y="200">سال ۲</text>
-            <text class="val" x="195" y="139">۵۴۶</text>
+            <rect x="200" y="133" width="50" height="37" fill="var(--primary)"/>
+            <text x="207" y="195">سال ۲</text>
+            <text class="val" x="200" y="126" text-anchor="middle">۵۴۶</text>
 
-            <rect x="300" y="105" width="50" height="75" fill="var(--primary)"/>
-            <text x="305" y="200">سال ۳</text>
-            <text class="val" x="292" y="98">۱٬۰۹۲</text>
+            <rect x="300" y="96" width="50" height="74" fill="var(--primary)"/>
+            <text x="307" y="195">سال ۳</text>
+            <text class="val" x="300" y="89" text-anchor="middle">۱٬۰۹۲</text>
 
-            <rect x="400" y="63" width="50" height="117" fill="var(--primary)"/>
-            <text x="405" y="200">سال ۴</text>
-            <text class="val" x="392" y="56">۱٬۶۳۸</text>
+            <rect x="400" y="58" width="50" height="112" fill="var(--primary)"/>
+            <text x="407" y="195">سال ۴</text>
+            <text class="val" x="400" y="51" text-anchor="middle">۱٬۶۳۸</text>
 
-            <rect x="500" y="30" width="50" height="150" fill="var(--accent)"/>
-            <text x="505" y="200">سال ۵</text>
-            <text class="val" x="492" y="23">۲٬۱۸۴</text>
+            <rect x="500" y="21" width="50" height="149" fill="var(--accent)"/>
+            <text x="507" y="195">سال ۵</text>
+            <text class="val" x="500" y="14" text-anchor="middle">۲٬۱۸۴</text>
           </g>
         </svg>
       </div>
@@ -469,13 +500,64 @@ flowchart RL
         </table>
       </div>
       <p style="margin-top:16px;font-size:13.5px;color:var(--text-muted)">سناریو بر پایه‌ی درآمد روزانه ۷ میلیون تومان و ۲۶ روز فعالیت است؛ پیش‌بینی قطعی نیست و باید پس از داده‌ی پایلوت بازکالیبره شود.</p>
+
+      <h4 style="margin:28px 0 12px">سناریوهای اقساط تسهیلات ۲ میلیارد تومانی (بر حسب نرخ و مدت)</h4>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>نرخ سالانه</th><th>مدت</th><th>قسط ماهانه</th><th>کل بازپرداخت</th><th>هزینه مالی</th></tr>
+          <tr><td class="num">۱۸٪</td><td class="num">۳۶ ماه</td><td class="num">۷۲,۳۰۴,۷۹۱</td><td class="num">۲,۶۰۲,۹۷۲,۴۷۹</td><td class="num">۶۰۲,۹۷۲,۴۷۹</td></tr>
+          <tr><td class="num">۱۸٪</td><td class="num">۴۸ ماه</td><td class="num">۵۸,۷۴۹,۹۹۹</td><td class="num">۲,۸۱۹,۹۹۹,۹۶۲</td><td class="num">۸۱۹,۹۹۹,۹۶۲</td></tr>
+          <tr><td class="num">۱۸٪</td><td class="num">۶۰ ماه</td><td class="num">۵۰,۷۸۶,۸۵۵</td><td class="num">۳,۰۴۷,۲۱۱,۲۹۱</td><td class="num">۱,۰۴۷,۲۱۱,۲۹۱</td></tr>
+          <tr style="background:var(--primary-tint)"><td class="num">۲۳٪ ⭐</td><td class="num">۶۰ ماه</td><td class="num" style="font-weight:700">۵۶,۳۸۰,۹۴۲</td><td class="num">۳,۳۸۲,۸۵۶,۵۳۱</td><td class="num">۱,۳۸۲,۸۵۶,۵۳۱</td></tr>
+          <tr><td class="num">۲۳٪</td><td class="num">۳۶ ماه</td><td class="num">۷۷,۴۱۹,۴۴۳</td><td class="num">۲,۷۸۷,۰۹۹,۹۵۲</td><td class="num">۷۸۷,۰۹۹,۹۵۲</td></tr>
+          <tr><td class="num">۲۳٪</td><td class="num">۴۸ ماه</td><td class="num">۶۴,۱۰۲,۹۴۳</td><td class="num">۳,۰۷۶,۹۴۱,۲۶۸</td><td class="num">۱,۰۷۶,۹۴۱,۲۶۸</td></tr>
+          <tr><td class="num">۳۰٪</td><td class="num">۳۶ ماه</td><td class="num">۸۴,۹۰۳,۱۵۳</td><td class="num">۳,۰۵۶,۵۱۳,۵۲۶</td><td class="num">۱,۰۵۶,۵۱۳,۵۲۶</td></tr>
+          <tr><td class="num">۳۰٪</td><td class="num">۴۸ ماه</td><td class="num">۷۲,۰۱۱,۹۸۸</td><td class="num">۳,۴۵۶,۵۷۵,۴۰۴</td><td class="num">۱,۴۵۶,۵۷۵,۴۰۴</td></tr>
+          <tr><td class="num">۳۰٪</td><td class="num">۶۰ ماه</td><td class="num">۶۴,۷۰۶,۷۹۲</td><td class="num">۳,۸۸۲,۴۰۷,۵۰۸</td><td class="num">۱,۸۸۲,۴۰۷,۵۰۸</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:12px;font-size:13px;color:var(--text-muted)">⭐ سناریوی مبنای این پروپوزال. نرخ سود/کارمزد نهایی هنوز از سوی مؤسسه‌ی مالی اعلام نشده؛ این جدول برای مذاکره و حساسیت‌سنجی است. مبالغ به تومان.</p>
+    </div>
+  </section>
+
+  <!-- 6.5 -->
+  <section id="capex" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۷</span><h2>بودجه‌ی اولیه پلتفرم — جدا از سرمایه‌ی ناوگان</h2></div>
+      <p class="sec-lede">سرمایه‌ی دلی باید عمدتاً صرف فناوری و بازارسازی شود؛ این بودجه کاملاً جدا از CAPEX خرید خودرو گزارش می‌شود تا سرمایه‌گذار تفاوت را روشن ببیند.</p>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>بخش</th><th>بودجه نمونه (تومان)</th><th>سهم از کل</th></tr>
+          <tr><td>اپ مسافر، راننده و پنل‌های مدیریتی</td><td class="num">۴,۰۰۰,۰۰۰,۰۰۰</td><td class="num">۳۳٫۳٪</td></tr>
+          <tr><td>بازاریابی و جذب عرضه‌کنندگان</td><td class="num">۳,۰۰۰,۰۰۰,۰۰۰</td><td class="num">۲۵٫۰٪</td></tr>
+          <tr><td>سرمایه در گردش</td><td class="num">۲,۰۰۰,۰۰۰,۰۰۰</td><td class="num">۱۶٫۷٪</td></tr>
+          <tr><td>مرکز تماس و پشتیبانی</td><td class="num">۱,۵۰۰,۰۰۰,۰۰۰</td><td class="num">۱۲٫۵٪</td></tr>
+          <tr><td>سرور، امنیت و زیرساخت ابری</td><td class="num">۱,۰۰۰,۰۰۰,۰۰۰</td><td class="num">۸٫۳٪</td></tr>
+          <tr><td>حقوقی و استقرار</td><td class="num">۵۰۰,۰۰۰,۰۰۰</td><td class="num">۴٫۲٪</td></tr>
+          <tr style="background:var(--primary-tint)"><td style="font-weight:700">جمع</td><td class="num" style="font-weight:700">۱۲,۰۰۰,۰۰۰,۰۰۰</td><td class="num" style="font-weight:700">۱۰۰٪</td></tr>
+        </table>
+      </div>
+      <div class="note" style="margin-top:16px"><strong>نکته:</strong> برآورد اسپرینتی MVP فاز ۱ (سند ۱۶) رقم ۱ تا ۲ میلیارد تومان برای نسخه‌ی اولیه‌ی قابل‌پایلوت را پوشش می‌دهد؛ ۱۲ میلیارد فوق، بودجه‌ی کامل پلتفرم تا نسخه‌ی تجاری بالغ (شامل بازاریابی و عملیات) است. این بودجه باید با RFP و استعلام واقعی از پیمانکاران نهایی شود.</div>
+    </div>
+  </section>
+
+  <!-- 6.6 -->
+  <section id="jobs">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۰۸</span><h2>اشتغال و اثر اقتصادی</h2></div>
+      <div class="grid3">
+        <div class="stat"><div class="big num">۵۰۰+</div><div class="lbl">بهره‌بردار مستقیم (راننده) در مقیاس ۵۰۰ خودرو</div></div>
+        <div class="stat"><div class="big num">۹</div><div class="lbl">حوزه‌ی اشتغال غیرمستقیم: فناوری، مرکز تماس، فروش، عملیات، آموزش، تعمیرات، محتوا، هتلداری، رستوران</div></div>
+        <div class="stat"><div class="big num">۷</div><div class="lbl">مزیت مستقیم برای وزارت گردشگری (دیجیتالی‌سازی، اشتغال، داده مقصد)</div></div>
+      </div>
+      <p style="margin-top:20px">مدل مشارکتی خودرو، سرمایه و اشتغال را عمدتاً به بخش خصوصی منتقل می‌کند؛ دلی بیشتر نقش بازارساز و پلتفرم را ایفا می‌کند، نه کارفرمای مستقیم کل ناوگان.</p>
     </div>
   </section>
 
   <!-- 7 -->
   <section id="roadmap">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۰۷</span><h2>فازبندی اجرایی</h2></div>
+      <div class="sec-head"><span class="sec-num">۰۹</span><h2>فازبندی اجرایی</h2></div>
       <p class="sec-lede">شش فاز از تصمیم‌گیری حقوقی تا مقیاس ملی — هر فاز معیار خروج شفاف دارد.</p>
 
       <div class="diagram" style="margin-bottom:28px">
@@ -509,7 +591,7 @@ gantt
   <!-- 8 -->
   <section id="architecture" class="alt">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۰۸</span><h2>معماری فنی</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۰</span><h2>معماری فنی</h2></div>
       <p class="sec-lede">پشته‌ی فناوری تأییدشده، برگرفته از الگوهای واقعی رقبا (اسنپ، Doctoreto) و متناسب‌سازی‌شده با مقیاس دلی.</p>
 
       <div class="diagram" style="margin-bottom:24px">
@@ -557,7 +639,7 @@ PHP/Laravel"]
   <!-- 9 -->
   <section id="software">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۰۹</span><h2>الگوریتم‌های هسته و فازبندی مهندسی</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۱</span><h2>الگوریتم‌های هسته و فازبندی مهندسی</h2></div>
       <p class="sec-lede">فاز ۱ به ۱۰ اسپرینت عملیاتی شکسته شده؛ سه الگوریتم هسته قلب MVP هستند.</p>
       <div class="grid3" style="margin-bottom:28px">
         <div class="stat"><div class="lbl" style="font-weight:700;color:var(--text);margin-bottom:6px">الگوریتم دیسپچ</div><p style="font-size:13.5px;margin:0">جست‌وجوی geo-radius فزاینده، رتبه‌بندی بر مبنای زمان رسیدن و امتیاز، قفل توزیع‌شده برای جلوگیری از تخصیص دوگانه.</p></div>
@@ -581,7 +663,7 @@ PHP/Laravel"]
   <!-- 10 -->
   <section id="infra" class="alt">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۱۰</span><h2>زیرساخت، پرداخت و امنیت تسویه‌حساب</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۲</span><h2>زیرساخت، پرداخت و امنیت تسویه‌حساب</h2></div>
       <p class="sec-lede">تسویه‌ی بین مسافر، دلی و راننده/عرضه‌کننده باید از مسیر یک PSP دارای مجوز عبور کند، نه کیف‌پول اختصاصی دلی.</p>
 
       <div class="diagram" style="margin-bottom:24px">
@@ -613,7 +695,7 @@ flowchart RL
   <!-- 11 -->
   <section id="risk">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۱۱</span><h2>تحلیل ریسک</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۳</span><h2>تحلیل ریسک</h2></div>
       <p class="sec-lede">هر ریسک زیر مبتنی بر یک حادثه‌ی واقعی و مستند در بازار است، نه فرض نظری.</p>
       <div class="table-scroll">
         <table class="data">
@@ -626,13 +708,20 @@ flowchart RL
           <tr><td>گسترش هم‌زمان در چند خوشه</td><td>الگوی شکست سوپراپ‌های نامتمرکز</td><td>فازبندی سخت‌گیرانه، محدوده عمدی فاز ۱</td></tr>
         </table>
       </div>
+
+      <div class="note risk" style="margin-top:20px">
+        <strong>مطالعه‌ی موردی Uber Xchange (۲۰۱۳–۲۰۱۸) — نزدیک‌ترین هشدار به مدل ۵/۱ دانگ دلی:</strong>
+        اوبر بدون تست پایلوت کوچک، تأمین مالی خودرو را مستقیماً در مقیاس بزرگ اجرا کرد. نتیجه:
+        نرخ بهره‌ی واقعی به‌جای وعده‌ی اولیه تا <strong class="num">۲۲٫۷۵٪</strong> رسید؛ راننده‌ای که خودرویی به ارزش <span class="num">۱۸,۱۴۲</span> دلار می‌گرفت، در پایان <span class="num">۳۰,۲۱۰</span> دلار پرداخت کرده بود (نزدیک یک‌سوم درآمد سالانه‌ی یک راننده‌ی تمام‌وقت). شرکت به‌طور متوسط <span class="num">۹,۰۰۰</span> دلار به‌ازای هر خودرو ضرر کرد، بیش از <span class="num">۲۰</span> میلیون دلار جریمه/تسویه‌ی حقوقی پرداخت شد، و برنامه در ۲۰۱۸ کاملاً تعطیل شد.
+        <br><strong>نتیجه برای دلی:</strong> دقیقاً به همین دلیل، پرداخت تسهیلات باید مرحله‌ای (۱۰۰ ← ۱۵۰ ← ۲۵۰ دستگاه) باشد، نه یکجا برای کل ۵۰۰ تا ۱۰۰۰ خودرو.
+      </div>
     </div>
   </section>
 
   <!-- 12 -->
   <section id="licenses" class="alt">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۱۲</span><h2>مجوزها و الزامات قانونی</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۴</span><h2>مجوزها و الزامات قانونی</h2></div>
       <div class="table-scroll">
         <table class="data">
           <tr><th>مجوز</th><th>مرجع</th><th>وضعیت</th></tr>
@@ -644,31 +733,104 @@ flowchart RL
           <tr><td>ثبت سفارش واردات + استاندارد</td><td>وزارت صمت، بانک مرکزی، استاندارد</td><td><span class="tag crit">نیاز استعلام گمرکی دقیق</span></td></tr>
         </table>
       </div>
+      <div class="note" style="margin-top:16px"><strong>جزئیات مجوز کسب‌وکار مجازی:</strong> شامل ضمانت‌نامه‌ی بانکی ۲۵ میلیون تومانی + سفته‌ی ۲۵ میلیون تومانی، مدارک هویتی/تحصیلی مدیران (حداقل ۲۵ سال سن، ۳ سال سابقه‌ی مرتبط)، ثبت اولیه در سامانه‌ی سادرا. صدور معمولاً ظرف ۱۵ روز پس از تطبیق مدارک. این مجوز <strong>جدا از مجوز دفتر خدمات مسافرتی</strong> است — یافته‌ای که در هیچ‌کدام از دو سند پروپوزال اولیه ذکر نشده بود.</div>
+    </div>
+  </section>
+
+  <!-- 12.5 -->
+  <section id="bankdocs">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۵</span><h2>مدارک مورد نیاز پرونده‌ی بانکی</h2></div>
+      <p class="sec-lede">چک‌لیست کامل برای تشکیل پرونده‌ی تسهیلات نزد مؤسسه‌ی مالی طرف قرارداد.</p>
+      <div class="grid2">
+        <ul class="plain">
+          <li><span class="m">۱</span>پیش‌فاکتور رسمی خودرو</li>
+          <li><span class="m">۲</span>استعلام نرخ و شرایط تسهیلات</li>
+          <li><span class="m">۳</span>مدارک ثبتی شرکت دلی (اساسنامه، آگهی تأسیس، روزنامه رسمی)</li>
+          <li><span class="m">۴</span>مجوز دفتر خدمات مسافرتی</li>
+          <li><span class="m">۵</span>طرح فنی اپ و RFP</li>
+        </ul>
+        <ul class="plain">
+          <li><span class="m">۶</span>قراردادهای اولیه هتل/آژانس/تور</li>
+          <li><span class="m">۷</span>بیمه و مشخصات فنی خودرو</li>
+          <li><span class="m">۸</span>مدل قرارداد سه‌جانبه (بانک/متقاضی/دلی)</li>
+          <li><span class="m">۹</span>برنامه‌ی جریان نقدی</li>
+          <li><span class="m">۱۰</span>رزومه‌ی مدیران و تیم اجرایی</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12.6 -->
+  <section id="governance" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۶</span><h2>ساختار حکمرانی پروژه</h2></div>
+      <p class="sec-lede">پیشنهاد سطح‌بندی رابطه‌ی دلی با وزارتخانه و بانک در سه لایه، به‌همراه کارگروه‌های اجرایی.</p>
+      <div class="table-scroll">
+        <table class="data">
+          <tr><th>نهاد</th><th>نقش</th></tr>
+          <tr><td>کمیته راهبری</td><td>نمایندگان مورد تأیید طرف‌های مشارکت‌کننده (دلی، بانک، وزارتخانه)</td></tr>
+          <tr><td>مدیریت اجرایی</td><td>شرکت دلی</td></tr>
+          <tr><td>کارگروه حقوقی</td><td>بررسی مجوزها و قراردادها</td></tr>
+          <tr><td>کارگروه مالی</td><td>مدل تسهیلات و توان بازپرداخت</td></tr>
+          <tr><td>کارگروه مقصد</td><td>اتصال هتل‌ها، تورها، جاذبه‌ها و سایر خدمات محلی</td></tr>
+        </table>
+      </div>
+      <p style="margin-top:16px">در سطح سیاستی، وزارتخانه نقش تنظیم‌گر و تسهیل‌گر دارد؛ دلی نقش پلتفرم اجرایی و تجاری. این پیشنهاد به معنی درخواست انتقال وظایف حاکمیتی نیست.</p>
+    </div>
+  </section>
+
+  <!-- 12.7 -->
+  <section id="kpi">
+    <div class="wrap">
+      <div class="sec-head"><span class="sec-num">۱۷</span><h2>شاخص‌های کلیدی عملکرد (KPI)</h2></div>
+      <div class="grid2">
+        <div>
+          <h4 style="margin-bottom:10px;font-size:15px">KPI سطح هیئت‌مدیره/بانک</h4>
+          <ul class="plain">
+            <li><span class="m">◆</span>GMV، درآمد خالص، Take Rate</li>
+            <li><span class="m">◆</span>CAC، LTV، تعداد سفارش ماهانه</li>
+            <li><span class="m">◆</span>میانگین ارزش سبد سفر، نرخ تکرار خرید</li>
+            <li><span class="m">◆</span>نرخ لغو و رضایت مشتری</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom:10px;font-size:15px">KPI اختصاصی ناوگان</h4>
+          <ul class="plain">
+            <li><span class="m">◆</span>درآمد خالص مالک به‌ازای هر خودرو</li>
+            <li><span class="m">◆</span>درصد پرداخت به‌موقع اقساط</li>
+            <li><span class="m">◆</span>ساعات فعال خودرو در روز</li>
+            <li><span class="m">◆</span>نرخ نکول و تعداد خودرو فعال</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 13 -->
-  <section id="benchmark">
+  <section id="benchmark" class="alt">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۱۳</span><h2>الگوهای تطبیقی</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۸</span><h2>الگوهای تطبیقی</h2></div>
       <div class="table-scroll">
         <table class="data">
           <tr><th>الگو</th><th>درس اصلی</th></tr>
-          <tr><td>Grab</td><td>حتی موفق‌ترین سوپراپ منطقه بیش از یک دهه طول کشید تا سودآور شود</td></tr>
-          <tr><td>GoTo/Gojek</td><td>انضباط هزینه و تمرکز جغرافیایی، عامل بازگشت به سودآوری</td></tr>
-          <tr><td>Careem</td><td>نزدیک‌ترین الگوی موفق منطقه‌ای با ساختار مشابه دلی</td></tr>
-          <tr><td>Snapp</td><td>مسیر اثبات‌شده‌ی تاکسی → سوپراپ، طی چند سال و مرحله‌ای</td></tr>
-          <tr><td>Alibaba.ir</td><td>مدل OTA ایرانی بدون وابستگی به زیرساخت بین‌المللی مقیاس‌پذیر است</td></tr>
-          <tr><td>Paziresh24</td><td>تمرکز روی یک مسئله، نه گستردگی، عامل رهبری بازار</td></tr>
+          <tr><td>Grab (سنگاپور)</td><td>حتی موفق‌ترین سوپراپ منطقه بیش از یک دهه طول کشید تا سودآور شود (سود خالص ۲۰۰ میلیون دلاری اولین بار در ۲۰۲۵)</td></tr>
+          <tr><td>GoTo/Gojek (اندونزی)</td><td>انضباط هزینه و تمرکز جغرافیایی، عامل بازگشت به سودآوری (رشد EBITDA ۵۴۴٪)</td></tr>
+          <tr><td>Careem (خاورمیانه)</td><td>نزدیک‌ترین الگوی موفق منطقه‌ای با ساختار مشابه دلی؛ ۵۰ میلیون کاربر در ۱۳ کشور</td></tr>
+          <tr><td>Snapp (ایران)</td><td>مسیر اثبات‌شده‌ی تاکسی → سوپراپ، طی چند سال و مرحله‌ای؛ ۶۰ میلیون کاربر، ۲۸۷ شهر</td></tr>
+          <tr><td>Alibaba.ir (ایران)</td><td>مدل OTA ایرانی بدون وابستگی به زیرساخت بین‌المللی مقیاس‌پذیر است؛ بیش از ۱۰ میلیون کاربر</td></tr>
+          <tr><td>Paziresh24 (ایران)</td><td>تمرکز روی یک مسئله، نه گستردگی، عامل رهبری بازار با سرمایه‌ای نسبتاً کم</td></tr>
+          <tr><td>GO (ژاپن)</td><td>مقیاس‌پذیری و طراحی استاندارد سرویس حمل‌ونقل؛ ۳۵+ میلیون دانلود، پوشش ۴۷ استان</td></tr>
+          <tr><td>RTA دبی</td><td>حمل‌ونقل گردشگری برای موفقیت به استاندارد خدمت، ثبت خودرو و نظارت رسمی نیاز دارد</td></tr>
         </table>
       </div>
     </div>
   </section>
 
   <!-- 14 -->
-  <section id="ask" class="alt">
+  <section id="ask">
     <div class="wrap">
-      <div class="sec-head"><span class="sec-num">۱۴</span><h2>جمع‌بندی و درخواست از بانک/وزارتخانه</h2></div>
+      <div class="sec-head"><span class="sec-num">۱۹</span><h2>جمع‌بندی و درخواست از بانک/وزارتخانه</h2></div>
       <div class="ask-grid">
         <div class="ask-item"><span class="no">۱</span><p>بررسی کارشناسی طرح و اعلام نظر درباره‌ی امکان اجرای پایلوت در مشهد</p></div>
         <div class="ask-item"><span class="no">۲</span><p>تسهیل ارتباط با اداره‌کل میراث فرهنگی خراسان رضوی</p></div>
