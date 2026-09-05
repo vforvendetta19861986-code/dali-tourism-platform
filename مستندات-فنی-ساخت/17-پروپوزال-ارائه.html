@@ -179,9 +179,42 @@
 
   .diagram{
     background:var(--surface); border:1px solid var(--line); border-radius:14px;
-    padding:18px; overflow-x:auto;
+    padding:24px 18px; overflow-x:auto;
   }
-  .diagram pre.mermaid{ direction:ltr; margin:0; }
+
+  /* ---- hand-built box/flow diagrams (no mermaid dependency) ---- */
+  .arch-row{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .arch-box{
+    background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:10px;
+    padding:12px 16px; text-align:center; font-size:13.5px; font-weight:700; color:var(--primary-strong);
+    min-width:150px; flex:1 1 150px; max-width:240px;
+  }
+  .arch-box span{ display:block; font-weight:500; font-size:12px; color:var(--text-muted); margin-top:4px; }
+  .arch-box.top{ max-width:none; flex:none; width:100%; }
+  .arch-box.wide{ max-width:320px; }
+  .arch-box.accent{ background:var(--accent-tint); border-color:var(--accent); color:var(--accent); }
+  .arch-conn{
+    text-align:center; font-size:12.5px; color:var(--text-muted); font-weight:600;
+    padding:6px 0; position:relative;
+  }
+  .arch-conn::before{ content:'↓'; display:block; font-size:16px; color:var(--primary); margin-bottom:2px; }
+
+  .flow-steps{ display:flex; align-items:stretch; gap:0; flex-wrap:wrap; justify-content:center; }
+  .flow-step{
+    display:flex; flex-direction:column; align-items:center; gap:8px; width:150px; text-align:center;
+  }
+  .fs-num{
+    width:36px; height:36px; border-radius:50%; background:var(--primary); color:var(--surface);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:15px; flex:none;
+  }
+  .fs-label{ font-size:12.5px; color:var(--text); line-height:1.5; }
+  .flow-arrow{ align-self:center; color:var(--text-muted); font-size:20px; padding:0 4px; margin-top:-24px; flex:none; }
+  @media (max-width:720px){ .flow-arrow{ transform:rotate(90deg); margin:4px 0; } }
+
+  .timeline-bar{ display:flex; height:36px; border-radius:8px; overflow:hidden; width:100%; }
+  .timeline-legend{ display:flex; flex-wrap:wrap; gap:16px; margin-top:14px; font-size:13px; }
+  .timeline-legend .lg{ display:flex; align-items:center; gap:7px; }
+  .timeline-legend .sw{ width:12px; height:12px; border-radius:3px; flex:none; }
 
   .chart-card{ background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; }
   .chart-card h4{ font-size:14px; margin-bottom:14px; color:var(--text-muted); font-weight:700; }
@@ -391,26 +424,23 @@
         <div class="stat"><div class="big num">۱٫۵ میلیارد</div><div class="lbl">آورده متقاضی (۴۲٫۸۶٪) — مالکیت ۵ دانگ</div></div>
       </div>
 
-      <h4 style="margin-bottom:12px">جریان واردات خودروی برقی</h4>
-      <div class="diagram" style="margin-bottom:28px">
-<pre class="mermaid">
-flowchart RL
-  A[انتخاب مدل خودروی برقی ۶ نفره] --> B["مجوز ثبت سفارش
-وزارت صمت"]
-  B --> C["تأیید منشأ ارز
-بانک مرکزی"]
-  C --> D["تأییدیه استاندارد ملی
-+ محیط زیست"]
-  D --> E{دسته‌بندی گمرکی}
-  E -->|تمام‌برقی| F["حقوق ورودی ۴٪"]
-  E -->|برقی/بردافزا| G["حقوق ورودی ۱۰۰٪ تا پایان ۱۴۰۵"]
-  F --> H[ترخیص و شماره‌گذاری با پلاک عمومی]
-  G --> H
-  H --> I[بیمه شخص ثالث + معاینه فنی]
-  I --> J[ورود به شبکه دلی]
-</pre>
+      <h4 style="margin-bottom:16px">جریان واردات خودروی برقی — ۶ گام تا ورود به شبکه</h4>
+      <div class="diagram" style="margin-bottom:16px">
+        <div class="flow-steps">
+          <div class="flow-step"><div class="fs-num">۱</div><div class="fs-label">انتخاب مدل خودروی برقی ۶ نفره</div></div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step"><div class="fs-num">۲</div><div class="fs-label">مجوز ثبت سفارش<br>(وزارت صمت)</div></div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step"><div class="fs-num">۳</div><div class="fs-label">تأیید منشأ ارز<br>(بانک مرکزی)</div></div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step"><div class="fs-num">۴</div><div class="fs-label">تأییدیه استاندارد ملی + محیط‌زیست</div></div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step"><div class="fs-num">۵</div><div class="fs-label">ترخیص و شماره‌گذاری<br>(پلاک عمومی)</div></div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step"><div class="fs-num">۶</div><div class="fs-label">بیمه + معاینه فنی → ورود به شبکه دلی</div></div>
+        </div>
       </div>
-      <div class="note risk" style="margin-bottom:28px"><strong>نکته مالی حیاتی:</strong> تفاوت قیمت تمام‌شده بین دسته‌بندی ۴٪ و ۱۰۰٪ حقوق ورودی می‌تواند چند برابر باشد و مستقیماً روی رقم ۳٫۵ میلیارد تومانی اثر بگذارد — استعلام گمرکی دقیق پیش از هر تصمیم مالی نهایی الزامی است.</div>
+      <div class="note risk" style="margin-bottom:28px"><strong>نکته مالی حیاتی (گام ۵):</strong> دسته‌بندی گمرکی خودرو دو حالت دارد — خودروی <strong>تمام‌برقی</strong> مشمول حقوق ورودی <strong>۴٪</strong>، ولی خودروی <strong>برقی/بردافزا (پلاگین‌هیبریدی)</strong> تا پایان ۱۴۰۵ مشمول <strong>۱۰۰٪</strong> است. این تفاوت می‌تواند قیمت تمام‌شده را چند برابر کند و مستقیماً روی رقم ۳٫۵ میلیارد تومانی اثر می‌گذارد — استعلام گمرکی دقیق پیش از هر تصمیم مالی نهایی الزامی است.</div>
 
       <h4 style="margin-bottom:12px">اقتصاد ماهانه‌ی هر خودرو (سناریوی پایه)</h4>
       <div class="table-scroll">
@@ -561,20 +591,21 @@ flowchart RL
       <p class="sec-lede">شش فاز از تصمیم‌گیری حقوقی تا مقیاس ملی — هر فاز معیار خروج شفاف دارد.</p>
 
       <div class="diagram" style="margin-bottom:28px">
-<pre class="mermaid">
-gantt
-  dateFormat  YYYY-MM
-  axisFormat  %b %y
-  section فاز ۰-۱
-  حقوقی و تصمیم‌گیری :a1, 2026-09, 2M
-  ساخت MVP فنی        :a2, after a1, 5M
-  section فاز ۲-۳
-  پایلوت ۱۰۰ خودرو مشهد :a3, after a2, 8M
-  گسترش خوشه خدمات       :a4, after a2, 7M
-  section فاز ۴-۵
-  توسعه چندشهری (شیراز→اصفهان) :a5, after a3, 30M
-  گردشگری سلامت و گردشگر خارجی :a6, after a5, 12M
-</pre>
+        <div class="timeline-bar">
+          <div style="width:21%;background:var(--critical)"></div>
+          <div style="width:52.6%;background:var(--good)"></div>
+          <div style="width:14%;background:var(--accent)"></div>
+          <div style="width:8.8%;background:var(--primary)"></div>
+          <div style="width:3.5%;background:var(--primary-strong)"></div>
+        </div>
+        <div class="timeline-legend">
+          <div class="lg"><span class="sw" style="background:var(--primary-strong)"></span>فاز ۰ — ۱ تا ۲ ماه</div>
+          <div class="lg"><span class="sw" style="background:var(--primary)"></span>فاز ۱ — ۴ تا ۶ ماه</div>
+          <div class="lg"><span class="sw" style="background:var(--accent)"></span>فاز ۲/۳ — ۶ تا ۱۰ ماه (هم‌پوشان)</div>
+          <div class="lg"><span class="sw" style="background:var(--good)"></span>فاز ۴ — ۳ تا ۴ سال</div>
+          <div class="lg"><span class="sw" style="background:var(--critical)"></span>فاز ۵ — از سال دوم به بعد</div>
+        </div>
+        <p style="margin-top:14px;font-size:12.5px;color:var(--text-muted)">نوار متناسب با میانگین برآورد مدت هر فاز است؛ خواندن از راست (فاز ۰) به چپ (فاز ۵). فاز ۲ و ۳ هم‌پوشان اجرا می‌شوند، نه پشت‌سرهم.</p>
       </div>
 
       <div>
@@ -595,22 +626,21 @@ gantt
       <p class="sec-lede">پشته‌ی فناوری تأییدشده، برگرفته از الگوهای واقعی رقبا (اسنپ، Doctoreto) و متناسب‌سازی‌شده با مقیاس دلی.</p>
 
       <div class="diagram" style="margin-bottom:24px">
-<pre class="mermaid">
-flowchart TB
-  C["کلاینت
-اپ مسافر / راننده / پنل مدیریت"] -->|REST HTTPS| GW["API Gateway"]
-  GW -->|gRPC| D["سرویس دیسپچ
-NestJS + WebSocket"]
-  GW -->|gRPC| B["سرویس رزرو و مدیریت
-PHP/Laravel"]
-  D <-->|Redis Geo + صف پیام| R[(Redis)]
-  B <--> PG[(PostgreSQL)]
-  D <--> PG
-  B -->|Setshare API| ZP["درگاه پرداخت
-زرین‌پال"]
-  D -->|API| MAP["نقشه
-نشان/بلد"]
-</pre>
+        <div class="arch-box top">کلاینت — اپ مسافر / اپ راننده / پنل مدیریت</div>
+        <div class="arch-conn">REST HTTPS</div>
+        <div class="arch-box top" style="max-width:320px;margin:0 auto">API Gateway</div>
+        <div class="arch-conn">gRPC</div>
+        <div class="arch-row">
+          <div class="arch-box wide">سرویس دیسپچ<span>NestJS + WebSocket</span></div>
+          <div class="arch-box wide">سرویس رزرو و مدیریت<span>PHP / Laravel</span></div>
+        </div>
+        <div class="arch-conn">داده و سرویس‌های بیرونی</div>
+        <div class="arch-row">
+          <div class="arch-box accent">Redis<span>Geo + صف پیام</span></div>
+          <div class="arch-box accent">PostgreSQL<span>دیتابیس اصلی</span></div>
+          <div class="arch-box accent">زرین‌پال<span>Setshare API</span></div>
+          <div class="arch-box accent">نشان / بلد<span>نقشه و مسیریابی</span></div>
+        </div>
       </div>
 
       <div class="grid2">
@@ -667,12 +697,12 @@ PHP/Laravel"]
       <p class="sec-lede">تسویه‌ی بین مسافر، دلی و راننده/عرضه‌کننده باید از مسیر یک PSP دارای مجوز عبور کند، نه کیف‌پول اختصاصی دلی.</p>
 
       <div class="diagram" style="margin-bottom:24px">
-<pre class="mermaid">
-flowchart RL
-  U["پرداخت مسافر"] --> ZP["زرین‌پال — سرویس Setshare"]
-  ZP -->|"سهم کمیسیون (۱۲٪)"| DALI["حساب دلی"]
-  ZP -->|"سهم راننده/عرضه‌کننده"| DR["حساب راننده / هتل / رستوران (شبا)"]
-</pre>
+        <div class="arch-box top" style="max-width:280px;margin:0 auto">پرداخت مسافر</div>
+        <div class="arch-conn">زرین‌پال — سرویس Setshare (تقسیم خودکار در لحظه‌ی پرداخت)</div>
+        <div class="arch-row">
+          <div class="arch-box accent">حساب دلی<span>سهم کمیسیون (۱۲٪)</span></div>
+          <div class="arch-box accent">حساب راننده / هتل / رستوران<span>واریز مستقیم به شبا (IBAN)</span></div>
+        </div>
       </div>
 
       <div class="grid2" style="margin-bottom:24px">
